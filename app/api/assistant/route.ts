@@ -8,7 +8,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Mensaje requerido" }, { status: 400 })
     }
 
-    // Aquí conectarás con tu API de OpenAI usando la clave de entorno
     const apiKey = process.env.Mr_ku_key
 
     if (!apiKey) {
@@ -22,12 +21,12 @@ export async function POST(request: NextRequest) {
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4",
+        model: "gpt-4o-mini", // Modelo más rápido y económico
         messages: [
           {
             role: "system",
             content:
-              "Eres Mr Ku, un asistente experto en tecnología, ciberseguridad e inteligencia artificial. Respondes de forma clara, técnica pero accesible, y siempre con un toque profesional.",
+              "Eres Mr Ku, un asistente experto en tecnología, ciberseguridad e inteligencia artificial. IMPORTANTE: Responde de forma CONCISA y DIRECTA. Máximo 3-4 párrafos cortos. Ve al grano sin rodeos. Usa bullet points cuando sea apropiado. Sé técnico pero claro.",
           },
           {
             role: "user",
@@ -35,7 +34,7 @@ export async function POST(request: NextRequest) {
           },
         ],
         temperature: 0.7,
-        max_tokens: 500,
+        max_tokens: 300, // Reducido de 500 a 300 para respuestas más cortas
       }),
     })
 

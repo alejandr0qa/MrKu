@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Send, Bot, User, X, MessageCircle } from "lucide-react"
 
 interface Message {
@@ -9,26 +9,39 @@ interface Message {
   content: string
 }
 
-export default function MrKuChat() {
+interface MrKuChatProps {
+  initialMessage?: string
+  autoOpen?: boolean
+}
+
+export default function MrKuChat({ initialMessage, autoOpen = false }: MrKuChatProps = {}) {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(autoOpen)
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!input.trim() || isLoading) return
+  useEffect(() => {
+    if (initialMessage && messages.length === 0) {
+      setInput(initialMessage)
+      // Auto-enviar el mensaje inicial después de un pequeño delay
+      setTimeout(() => {
+        handleSubmitWithMessage(initialMessage)
+      }, 500)
+    }
+  }, [initialMessage])
 
-    const userMessage = input.trim()
+  const handleSubmitWithMessage = async (messageText: string) => {
+    if (!messageText.trim() || isLoading) return
+
     setInput("")
-    setMessages((prev) => [...prev, { role: "user", content: userMessage }])
+    setMessages((prev) => [...prev, { role: "user", content: messageText }])
     setIsLoading(true)
 
     try {
       const response = await fetch("/api/assistant", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMessage }),
+        body: JSON.stringify({ message: messageText }),
       })
 
       if (!response.ok) throw new Error("Error en la respuesta")
@@ -47,6 +60,11 @@ export default function MrKuChat() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    await handleSubmitWithMessage(input.trim())
   }
 
   return (

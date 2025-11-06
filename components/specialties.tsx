@@ -5,7 +5,7 @@ const specialties = [
     icon: Brain,
     title: "Inteligencia Artificial",
     description: "Desarrollo de soluciones con IA generativa, machine learning y automatización inteligente.",
-    color: "#0070f3",
+    color: "#00ff99",
     items: ["Modelos de lenguaje (LLMs)", "Automatización con IA", "Análisis predictivo", "Chatbots y asistentes"],
   },
   {
@@ -19,7 +19,7 @@ const specialties = [
     icon: Cloud,
     title: "Cloud & Dev",
     description: "Arquitecturas modernas, desarrollo full-stack y despliegue en la nube.",
-    color: "#00d4ff",
+    color: "#0070f3",
     items: ["Next.js & React", "Arquitectura serverless", "CI/CD pipelines", "Infraestructura como código"],
   },
 ]
@@ -43,7 +43,7 @@ export default function Specialties() {
             return (
               <div
                 key={index}
-                className="group relative bg-card border border-border rounded-xl p-8 hover:border-primary/50 transition-all duration-300 hover:scale-105"
+                className="group relative glass-panel rounded-xl p-8 hover:border-primary/50 transition-all duration-300 hover:scale-105"
               >
                 {/* Glow effect on hover */}
                 <div

@@ -6,12 +6,14 @@ import Newsletter from "@/components/newsletter"
 import MrKuChat from "@/components/mr-ku-chat"
 import Footer from "@/components/footer"
 import StartupScreen from "@/components/startup-screen"
+import ParticleBackground from "@/components/particle-background"
 
 export default function Home() {
   return (
     <>
       <StartupScreen />
-      <main className="min-h-screen">
+      <ParticleBackground />
+      <main className="min-h-screen relative">
         <Hero />
         <Specialties />
         <Stats />

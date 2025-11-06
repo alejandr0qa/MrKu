@@ -76,8 +76,11 @@
 }
 
 @theme inline {
-  --font-sans: "Inter", "Inter Fallback", system-ui, -apple-system, sans-serif;
+  /* Agregando tipografía futurista Orbitron */
+  --font-sans: "Orbitron", "Inter", "Inter Fallback", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "JetBrains Mono Fallback", "Courier New", monospace;
+  --font-display: "Orbitron", system-ui, sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -118,6 +121,8 @@
   /* Custom brand colors */
   --color-electric-blue: #0070f3;
   --color-neon-pink: #ff007a;
+  /* Agregando color verde neón para partículas */
+  --color-neon-green: #00ff99;
 }
 
 @layer base {
@@ -134,18 +139,74 @@
   }
 }
 
-/* Custom gradient effects */
+/* Gradientes animados mejorados */
 .gradient-text {
-  background: linear-gradient(135deg, #0070f3 0%, #ff007a 100%);
+  background: linear-gradient(135deg, #00ff99 0%, #0070f3 50%, #ff007a 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Efecto glassmorphism */
+.glass-panel {
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-light {
+  background: rgba(15, 15, 15, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Efectos de brillo mejorados */
 .glow-effect {
-  box-shadow: 0 0 20px rgba(0, 112, 243, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.3), 0 0 40px rgba(0, 112, 243, 0.2);
 }
 
 .glow-effect-pink {
   box-shadow: 0 0 20px rgba(255, 0, 122, 0.3);
+}
+
+.glow-effect-green {
+  box-shadow: 0 0 20px rgba(0, 255, 153, 0.4);
+}
+
+/* Animación de gradiente de fondo para móviles */
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+/* Respeto a prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text,
+  .animate-gradient {
+    animation: none;
+  }
 }

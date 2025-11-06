@@ -8,7 +8,7 @@ const articles = [
     date: "15 Ene 2025",
     category: "Inteligencia Artificial",
     readTime: "12 min",
-    gradient: "from-[#0070f3]/20 to-transparent",
+    gradient: "from-[#00ff99]/20 to-transparent",
   },
   {
     title: "Zero Trust Security: Implementación real",
@@ -25,7 +25,7 @@ const articles = [
     date: "5 Ene 2025",
     category: "Desarrollo",
     readTime: "10 min",
-    gradient: "from-[#00d4ff]/20 to-transparent",
+    gradient: "from-[#0070f3]/20 to-transparent",
   },
   {
     title: "Prompt Engineering: Más allá de lo básico",
@@ -33,7 +33,7 @@ const articles = [
     date: "28 Dic 2024",
     category: "Inteligencia Artificial",
     readTime: "14 min",
-    gradient: "from-[#0070f3]/20 to-transparent",
+    gradient: "from-[#00ff99]/20 to-transparent",
   },
   {
     title: "Pentesting moderno: Herramientas y metodología",
@@ -51,7 +51,7 @@ const articles = [
     date: "15 Dic 2024",
     category: "Cloud & DevOps",
     readTime: "20 min",
-    gradient: "from-[#00d4ff]/20 to-transparent",
+    gradient: "from-[#0070f3]/20 to-transparent",
   },
 ]
 
@@ -61,7 +61,7 @@ export default function FeaturedContent() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Contenido <span className="text-[#0070f3]">Destacado</span>
+            Contenido <span className="gradient-text">Destacado</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Artículos técnicos profundos, tutoriales prácticos y análisis sin filtros. Contenido que realmente aporta
@@ -73,7 +73,7 @@ export default function FeaturedContent() {
           {articles.map((article, index) => (
             <article
               key={index}
-              className="group bg-card border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:scale-105"
+              className="group glass-panel rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:scale-105"
             >
               <div
                 className={`h-48 bg-gradient-to-br ${article.gradient} flex items-center justify-center relative overflow-hidden`}

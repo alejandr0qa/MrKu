@@ -22,14 +22,14 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-br from-[#0070f3]/10 via-transparent to-[#ff007a]/10">
+    <section className="py-24 px-4 bg-gradient-to-br from-[#00ff99]/10 via-transparent to-[#0070f3]/10">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-xl bg-primary/10 border border-primary/20">
-          <Mail className="w-8 h-8 text-primary" />
+        <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-xl glass-panel border border-primary/20">
+          <Mail className="w-8 h-8 text-[#00ff99]" />
         </div>
 
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Mantente <span className="text-[#0070f3]">Actualizado</span>
+          Mantente <span className="gradient-text">Actualizado</span>
         </h2>
 
         <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -45,12 +45,12 @@ export default function Newsletter() {
             placeholder="tu@email.com"
             required
             disabled={status === "loading" || status === "success"}
-            className="flex-1 px-6 py-4 bg-card border border-border rounded-lg focus:outline-none focus:border-primary transition-colors font-mono"
+            className="flex-1 px-6 py-4 glass-panel rounded-lg focus:outline-none focus:border-primary transition-colors font-mono"
           />
           <button
             type="submit"
             disabled={status === "loading" || status === "success"}
-            className="px-8 py-4 bg-[#0070f3] hover:bg-[#0070f3]/90 text-white rounded-lg font-medium transition-all glow-effect hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="px-8 py-4 bg-[#00ff99] hover:bg-[#00ff99]/90 text-black rounded-lg font-medium transition-all glow-effect-green hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {status === "loading" && "Enviando..."}
             {status === "success" && "¡Suscrito!"}
@@ -65,7 +65,7 @@ export default function Newsletter() {
         </form>
 
         {status === "success" && (
-          <p className="mt-4 text-sm text-[#0070f3]">¡Gracias! Revisa tu email para confirmar la suscripción.</p>
+          <p className="mt-4 text-sm text-[#00ff99]">¡Gracias! Revisa tu email para confirmar la suscripción.</p>
         )}
       </div>
     </section>

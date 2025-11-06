@@ -1,21 +1,23 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, JetBrains_Mono } from "next/font/google"
+import { Orbitron, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const inter = Inter({
+const orbitron = Orbitron({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-orbitron",
+  display: "swap",
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "Mr Ku 🧠 — Tecnología, Ciberseguridad e IA",
+  title: "Mr Ku — Tecnología, Ciberseguridad e IA",
   description: "Tecnología, Ciberseguridad e Inteligencia Artificial sin humo",
   generator: "v0.app",
 }
@@ -26,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="es" className={`${orbitron.variable} ${jetbrainsMono.variable}`}>
       <body className={`font-sans antialiased`}>
         {children}
         <Analytics />
